@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../index.js"></script>
+    <script>
+        var sample_data = [
+            {
+                "id": 11,
+                "nama": "Aceh",
+                "kota_kabupaten": [
+                    { "id": 1101, "id_provinsi": "11", "nama": "Kabupaten Simeulue" },
+                    { "id": 1102, "id_provinsi": "11", "nama": "Kabupaten Aceh Singkil" },
+                    { "id": 1103, "id_provinsi": "11", "nama": "Kabupaten Aceh Selatan" }
+                ]
+            },
+            {
+                "id": 12,
+                "nama": "Sumatera Utara",
+                "kota_kabupaten": [
+                    { "id": 1201, "id_provinsi": "12", "nama": "Kabupaten Nias" },
+                    { "id": 1202, "id_provinsi": "12", "nama": "Kabupaten Mandailing Natal" },
+                    { "id": 1203, "id_provinsi": "12", "nama": "Kabupaten Tapanuli Selatan" },
+                    { "id": 1204, "id_provinsi": "12", "nama": "Kabupaten Tapanuli Tengah" }
+                ]
+            },
+            {
+                "id": 13,
+                "nama": "Sumatera Barat",
+                "kota_kabupaten": [
+                    { "id": 1301, "id_provinsi": "13", "nama": "Kabupaten Kepulauan Mentawai" },
+                    { "id": 1302, "id_provinsi": "13", "nama": "Kabupaten Pesisir Selatan" },
+                    { "id": 1303, "id_provinsi": "13", "nama": "Kabupaten Solok" }
+                ]
+            }
+        ];
+
+        /*
+            pencarian berdasarkan keseluruhan nilai keys pada 
+            array object
+        
+            searching by all values from keys array object
+        */
+        var results_1 = array_search(sample_data, "12");
+        console.log(results_1);
+
+        /*
+            pencarian berdasarkan key kota_kabupaten
+
+            searching by spesific keys kota_kabupaten
+        */
+        var results_2 = array_search(sample_data, "12", ['kota_kabupaten']);
+        console.log(results_2);
+
+        /*
+            pencarian berdasarkan key kota_kabupaten dengan index ke 0
+
+            searching by key kota_kabupaten with index 0
+        */
+        /*
+            balikan kosong,  karena mandailing tidak ditemukan pada index 0
+            return empty index, because mandailing not found at index 0
+        */
+        var results_3 = array_search(sample_data, "Mandailing", ['kota_kabupaten',0]);
+        console.log(results_3);
+        
+
+        /*
+            terdapat balikan, karena mandailing ditemukan pada index 1
+            has return, because mandailing is founded at index 1
+        */
+        var results_4 = array_search(sample_data, "Mandailing", ['kota_kabupaten',1]);
+        console.log(results_4);
+
+        /*
+            pencarian berdasarkan key kota_kabupatan dengan index 1 dan dengan key nama
+
+            searching by key kota_kabupaten with index 1 and keys nama
+        */
+        var results_5 = array_search(sample_data, "Mandailing", ['kota_kabupaten',1, 'nama']);
+        console.log(results_5);
+
+        /*
+            pencarian berdasarkan key kota_kabupatan dengan index 1 dan dengan key nama
+            pada index ke 0 sample_data
+
+            searching by key kota_kabupaten with index 1 and keys nama and index at 0 of sample_data
+        */
+        var results_5 = array_search(sample_data, "Singkil", ['kota_kabupaten',1, 'nama'], 0);
+        console.log(results_5);
+    </script>
+</body>
+
+</html>
